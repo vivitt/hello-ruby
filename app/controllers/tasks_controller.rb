@@ -18,4 +18,10 @@ class TasksController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  private
+  def task_params
+    params.require(:task).permit(:title, :details)
+  end
+
 end
