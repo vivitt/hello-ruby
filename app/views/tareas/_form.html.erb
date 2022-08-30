@@ -1,0 +1,40 @@
+<%= form_with(model: tarea) do |form| %>
+  <form class="box">
+  <% if tarea.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tarea.errors.count, "error") %> prohibited this tarea from being saved:</h2>
+
+      <ul>
+        <% tarea.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :task, style: "display: block" %>
+    <div class="control">
+      <input class="input" type="task" placeholder="Write a task">
+      <%= form.text_field :descr  %>
+    </div>
+    
+  </div>
+
+  <div>
+    <%= form.label :completed, style: "display: block" %>
+    <%= form.check_box :completed %>
+  </div>
+
+  <div>
+    <button class="button is-primary">
+      <%= form.submit %>
+    </button>
+  </div>
+  </form>
+<% end %>
+
+
+
+
+
