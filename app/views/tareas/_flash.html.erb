@@ -1,0 +1,6 @@
+<%= flash.each do |name, msg| %>
+<div class="notification">
+  <button class="delete"></button>
+  <%= content_tag( msg) %>
+</div>
+<% end %>

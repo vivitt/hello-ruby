@@ -1,0 +1,14 @@
+<section class="section">
+
+    <h1 class="title">New task</h1>
+    <div class="box">
+    <%= render "form", tarea: @tarea %>
+
+    </div>
+
+    <div>
+      <button class="button">
+        <%= link_to "Back to all my tasks", tareas_path %>
+      </button>
+  </div>
+</section>
