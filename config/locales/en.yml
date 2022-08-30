@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      tarea:
+        descr: "Task"
+    errors:
+      models:
+        tarea:
+          attributes:
+            descr:
+              blank: "can't be empty"

@@ -11,11 +11,12 @@
   </head>
 
   <body>
-     <div class="container">  
-    <%= render "tareas/flash" %>
-      
-    <%= yield %>
-
-    </div>
+  <%= render "tareas/navbar" %>
+  <div class="container"> 
+    
+        <%= render "tareas/flash" %>
+        
+        <%= yield %>
+  </div>
   </body>
 </html>

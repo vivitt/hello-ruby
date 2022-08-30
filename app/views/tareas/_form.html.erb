@@ -2,7 +2,7 @@
   <form class="box">
   <% if tarea.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(tarea.errors.count, "error") %> prohibited this tarea from being saved:</h2>
+      <h2> Something went wrong:</h2>
 
       <ul>
         <% tarea.errors.each do |error| %>
