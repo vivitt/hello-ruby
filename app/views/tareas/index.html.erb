@@ -1,50 +1,71 @@
 <section class="section">
+<div class="box">
+<%= render "tareas/form_index" %>
+</div>
 
-<h1 class="title">Todo List</h1>
-
+<div class="box">
+<% if @tareas.any? %>
 <table class="table">
   <tbody>
-    
-      <% @tareas.each do |tarea| %>
+    <% @tareas.each do |tarea| %>
     <tr>
       <% if tarea.completed %>
-      <td><p class="completed"><%= tarea.descr %></p>
-      <td><p>completed</p></td>
+      <td><p class="completed"><%= tarea.descr %></p></td>
+      <td>
+      <center>
+      <%=form_for(tarea) do |f| %>
+        <%= f.text_field :descr, type: 'hidden'  %>
+        <%= f.check_box :completed, :checked => false, :style => 'visibility: hidden'  %>
+        <%= f.submit "✔︎", class: 'button is-light' %>
+        <% end %>
+        </center>
       </td>
+ 
       
       <% else %>
       <td><p><%= tarea.descr %></p></td>
-      <td><p>to do</p></td>
+      <td>
+      <center>
+      <%=form_for(tarea) do |f| %>
+        <%= f.text_field :descr, type: 'hidden'  %>
+        <%= f.check_box :completed, :checked => true, :style => 'visibility: hidden'  %>
+        <%= f.submit "✔︎", class: 'button' %>
+      <% end %>
+      </center>
+      </td>
       <% end %>
       
       <td>
-        <i class="fa-solid fa-eye">
-          <%= link_to "Show", tarea %>
-        </i>
+        
+          <%= link_to tarea do %>
+          <i class="fa-solid fa-eye"></i>
+          <%end%>
       </td>
       <td>
-        <i class="fa-solid fa-pen">
-          <%= link_to "Edit", edit_tarea_path(tarea) %>
-        </i>
+        
+          <%= link_to edit_tarea_path(tarea) do %>
+          <i class="fa-solid fa-pen"></i>
+          <%end%>
       </td>
       <td>
-        <i class="fa-solid fa-trash-can">
-          <%= link_to "Delete", tarea, method: :delete, data: {
-          turbo_method: :delete,
-          turbo_confirm: "Are you sure?"
-        } %>
-        </i>
+      <%= link_to tarea, method: :delete, data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } do %>  
+        <i class="fa-solid fa-trash-can"></i>
+      <%end%>
       </td>
     </tr>
    
   <% end %>
   </tbody>
 </table>
+<% else %>
+<h1 class="title is-6">Not tasks added yet</h1>
 
-<div>
-  <button class="button">
-    <%= link_to "New task", new_tarea_path %>
-  </button>
+<% end %>
+
 </div>
+
 
 </section>

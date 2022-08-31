@@ -1,13 +1,15 @@
 class TareasController < ApplicationController
-  before_action :set_tarea, only: %i[ show edit update destroy ]
+  before_action :set_tarea, only: %i[show edit update destroy]
 
   # GET /tareas or /tareas.json
   def index
     @tareas = Tarea.all
+    @tarea = Tarea.new
   end
 
   # GET /tareas/1 or /tareas/1.json
   def show
+    @tarea.destroy
   end
 
   # GET /tareas/new
@@ -25,11 +27,17 @@ class TareasController < ApplicationController
 
     respond_to do |format|
       if @tarea.save
-        format.html { redirect_to root_url(@tarea), notice: "Tarea was successfully created." }
+        format.html do
+          redirect_to root_url(@tarea), notice: "Task successfully created :)"
+        end
         format.json { render :show, status: :created, location: @tarea }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tarea.errors, status: :unprocessable_entity }
+        format.html do
+          redirect_to root_url(@tarea), alert: "Task can't be empty"
+        end
+        format.json do
+          render json: @tarea.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -38,11 +46,15 @@ class TareasController < ApplicationController
   def update
     respond_to do |format|
       if @tarea.update(tarea_params)
-        format.html { redirect_to root_url(@tarea), notice: "Tarea was successfully updated." }
+        format.html do
+          redirect_to root_url(@tarea), notice: "Task successfully updated"
+        end
         format.json { render :show, status: :ok, location: @tarea }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tarea.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @tarea.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -52,19 +64,22 @@ class TareasController < ApplicationController
     @tarea.destroy
 
     respond_to do |format|
-      format.html { redirect_to tareas_url, notice: "Tarea was successfully destroyed." }
+      format.html do
+        redirect_to root_url(@tarea), notice: "Task successfully deleted"
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tarea
-      @tarea = Tarea.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tarea_params
-      params.require(:tarea).permit(:descr, :completed)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tarea
+    @tarea = Tarea.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def tarea_params
+    params.require(:tarea).permit(:descr, :completed)
+  end
 end

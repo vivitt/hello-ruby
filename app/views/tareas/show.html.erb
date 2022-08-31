@@ -1,10 +1,37 @@
+<section class="section">
+  <h1 class="title"> <%= @tarea.descr %> </h1>
+  <h1 class="title is-6">Created at <%= @tarea.created_at %> </h1>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= link_to "Edit this tarea", edit_tarea_path(@tarea) %> </td>
+          <td><%= link_to "Back", :back %></td>
+          <td><%= button_to "Destroy this tarea", @tarea, method: :delete  %>
+          </td>
+      </tr>
+      <tr>
+      <td><%= link_to edit_tarea_path(@tarea) do %>
+            <i class="fa-solid fa-pen"></i>
+          <% end %>
+      </td>
+      <td>
+      <%= link_to root_url, method: :delete, data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } do %>  
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+      </td>
+      <td><%= link_to root_url do %>
+        <i class="fa-solid fa-left"></i>
+        <% end %>
+        </td>
+          </tr>
 
 
-<%= render @tarea %>
+          
+      </tbody>
+    </table>
+</section>
 
-<div>
-  <%= link_to "Edit this tarea", edit_tarea_path(@tarea) %> |
-  <%= link_to "Back to tareas", tareas_path %>
 
-  <%= button_to "Destroy this tarea", @tarea, method: :delete %>
-</div>

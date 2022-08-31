@@ -1,6 +1,11 @@
-<%= flash.each do |name, msg| %>
-<div class="notification">
-  <button class="delete"></button>
-  <%= content_tag( msg) %>
+<% flash.each do |type, msg| %>
+  <% if notice %>
+  <div class="notification is-success is-light">
+    <%= msg %>
+  </div>
+  <% else %>
+  <div class="notification is-danger is-light">
+  <%= msg %>
 </div>
+<% end %>
 <% end %>
