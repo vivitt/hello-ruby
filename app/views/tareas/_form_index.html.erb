@@ -1,0 +1,20 @@
+<%= render "tareas/error" %>
+
+<%= form_with(model: @tarea) do |f| %>
+  
+  <form class="box">
+  <div class="control">
+        <div class="field">
+            <%= f.text_field :descr, class: "input", placeholder: "New task", style: "max-width: 900px" %>
+            <%= f.submit "add", class: "button" %>
+        </div>
+    
+  </div>
+
+  </form>
+<% end %>
+
+
+
+
+

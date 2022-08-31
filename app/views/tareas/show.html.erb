@@ -1,5 +1,6 @@
 <section class="section">
   <h1 class="title"> <%= @tarea.descr %> </h1>
+  <h1 class="title is-6">Created at <%= @tarea.created_at %> </h1>
     <table class="table">
       <tbody>
         <tr>
@@ -14,7 +15,7 @@
           <% end %>
       </td>
       <td>
-      <%= link_to root_path, method: :delete, data: {
+      <%= link_to root_url, method: :delete, data: {
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
       } do %>  
