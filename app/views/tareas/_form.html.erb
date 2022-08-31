@@ -1,29 +1,16 @@
-
-
-<%= form_with(model: tarea) do |form| %>
-  
+<%= form_with(model: tarea) do |f| %>
   <form class="box">
-
-  
-  <div class="field">
-    <%= form.label :task, style: "display: block" %>
-    <div class="control">
-      <input class="input" type="task" placeholder="Write a task">
-      <%= form.text_field :descr  %>
-    </div>
+  <div class="control">
+        <div class="field">
+            <%= f.text_field :descr, class: "input", placeholder: "New task" %>
+            <%= f.submit "update", class: "button"  %>
+        </div>
     
   </div>
 
-<div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.check_box :completed %>
-  </div>
+  </form>
 
-  <div>
-    <button class="button is-primary">
-      <%= form.submit %>
-    </button>
-  </div>
+  
   </form>
 <% end %>
 

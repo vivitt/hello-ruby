@@ -4,29 +4,26 @@
     <table class="table">
       <tbody>
         <tr>
-          <td><%= link_to "Edit this tarea", edit_tarea_path(@tarea) %> </td>
-          <td><%= link_to "Back", :back %></td>
-          <td><%= button_to "Destroy this tarea", @tarea, method: :delete  %>
-          </td>
-      </tr>
-      <tr>
-      <td><%= link_to edit_tarea_path(@tarea) do %>
-            <i class="fa-solid fa-pen"></i>
+        <td><%= link_to edit_tarea_path(@tarea) do %>
+          <button class="button is-ghost">
+          <i class="fa-solid fa-pen"></i>
+          </button>
           <% end %>
-      </td>
-      <td>
-      <%= link_to root_url, method: :delete, data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      } do %>  
-        <i class="fa-solid fa-trash-can"></i>
-      <% end %>
-      </td>
-      <td><%= link_to root_url do %>
-        <i class="fa-solid fa-left"></i>
+        </td>
+        <td><%= button_to @tarea, class: "button is-ghost", method: :delete do %>  
+          <i class="fa-solid fa-trash-can"></i>
         <% end %>
         </td>
-          </tr>
+          <td><%= link_to tareas_path  do %>
+            <button class="button is-ghost">
+            <i class="fa-solid fa-left"></i>
+            Back
+            <button class="button is-ghost">
+            <% end %>
+            </td>
+          
+      </tr>
+  
 
 
           

@@ -9,7 +9,7 @@ class TareasController < ApplicationController
 
   # GET /tareas/1 or /tareas/1.json
   def show
-    @tarea.destroy
+    
   end
 
   # GET /tareas/new
